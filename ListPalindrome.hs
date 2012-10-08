@@ -1,8 +1,6 @@
 listPalindrome xs
   | xs == []  = []
-  | otherwise = xs:(reverseList xs)
+  | otherwise = xs ++ (reverseList xs)
 
-reverseList xs = reverser xs []
-
-reverser (x:xs) ys = reverser xs (ys ++ x)
-reverser [] ys     = ys
+reverseList (x:xs) = (reverseList xs) ++ [x]
+reverseList []     = []
