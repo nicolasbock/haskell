@@ -9,3 +9,7 @@ fromList (x:xs) = Node x (fromList left) (fromList right)
                     left  = fst temp
                     right = snd temp
 fromList [] = Empty
+
+-- Get the height of a tree.
+getHeight (Node a left right) = 1 + (max (getHeight left) (getHeight right))
+getHeight Empty               = 0
