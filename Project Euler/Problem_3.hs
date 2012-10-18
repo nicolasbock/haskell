@@ -1,9 +1,13 @@
 -- Prime factorization.
-getFactor i lastF fs =
-  if mod i lastF == 0 then
-    getFactor (div i lastF) lastF (lastF:fs)
-  else
-    if i <= lastF then fs
-    else getFactor i lastF fs
-  where
-    lastF = lastF+1
+getFactor i factor fs
+  | mod i factor == 0 = getFactor (removeFactor i factor) (factor+1) (factor:fs)
+  | i < factor        = fs
+  | otherwise         = getFactor i (factor+1) fs
+
+removeFactor i factor
+  | mod i factor == 0 = removeFactor (div i factor) factor
+  | otherwise         = i
+
+main = do
+  putStrLn (show (reverse (getFactor 13195 2 [])))
+  putStrLn (show (reverse (getFactor 600851475143 2 [])))
