@@ -11,7 +11,7 @@ matching n answer
     sort (digits n []) == sort (digits (3*n) []) &&
     sort (digits n []) == sort (digits (4*n) []) &&
     sort (digits n []) == sort (digits (5*n) []) &&
-    sort (digits n []) == sort (digits (6*n) [])     = matching (n+1) (n:answer)
+    sort (digits n []) == sort (digits (6*n) [])     = matching 1 (n:answer)
   | otherwise                                        = matching (n+1) answer
 
 main = do
