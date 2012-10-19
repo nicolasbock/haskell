@@ -1,10 +1,10 @@
-isDivisible n (f:fs)
-  | mod n f == 0 = True && (isDivisible n fs)
-  | otherwise    = False
-isDivisible n [] = True
+import PrimeFactors
 
-findDivisible (f:fs)
-  | isDivisible f [ 1.. 20 ] = f
-  | otherwise                = findDivisible fs
+findFactors (n:ns) fs = findFactors ns (addFactors (allPrimeFactors n) (sort fs))
+  where
+    addFactors (n:ns) (f:fs)
+      | n == f = addFactors ns fs
+    addFactors [] fs = fs
+findFactors [] fs = fs
 
-main = putStrLn (show (findDivisible [ 1 .. ]))
+main = putStrLn (show (findFactors [ 1 .. 20 ] []))
