@@ -11,9 +11,15 @@ primeFactors i = getFactor i 2
       | mod i factor == 0 = removeFactor (div i factor) factor
       | otherwise         = i
 
+-- Get all prime factors (list contains duplicates).
 allPrimeFactors i = allPrimeFactors' i 2
   where
     allPrimeFactors' i factor
       | mod i factor == 0 = factor:(allPrimeFactors' (div i factor) factor)
       | i < factor        = []
       | otherwise         = allPrimeFactors' i (factor+1)
+
+-- Test if prime.
+isPrime i
+  | length (allPrimeFactors i) == 1 = True
+  | otherwise                       = False
