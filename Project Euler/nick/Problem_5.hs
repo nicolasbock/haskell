@@ -1,10 +1,11 @@
 import PrimeFactors
+import Data.List
 
-findFactors (n:ns) fs = findFactors ns (addFactors (allPrimeFactors n) (sort fs))
+findFactors (n:ns) fs = findFactors ns (addFactors (allPrimeFactors n) fs)
   where
-    addFactors (n:ns) (f:fs)
-      | n == f = addFactors ns fs
-    addFactors [] fs = fs
+    addFactors ns fs = (ns \\ fs) ++ fs
 findFactors [] fs = fs
 
-main = putStrLn (show (findFactors [ 1 .. 20 ] []))
+main = putStrLn ((show (sort factorList)) ++ ": " ++ (show (product factorList)))
+  where
+    factorList = findFactors [ 1 .. 20 ] []
