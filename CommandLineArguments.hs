@@ -1,9 +1,9 @@
-import System ( getArgs )
-import System.Console.GetOpt
+import Data.List
+import System.Environment
+import System.Exit
 
-main = do
-  args <- getArgs
-  let ( flags, nonOpts, msgs ) = getOpt RequireOrder options args
-  print $ length flags
+main = getArgs >>= parse
 
-options = []
+parse ["-h"] = putStrLn "Usage: ...." >> (exitWith ExitSuccess)
+parse []     = getContents
+parse fs     = putStrLn ("Unknown arguments: " ++ (intercalate " " fs)) >> (exitWith (ExitFailure 1))
