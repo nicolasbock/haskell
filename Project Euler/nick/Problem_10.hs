@@ -26,4 +26,4 @@ eratosthenes n = sort (eratosthenes' [] [ 2..n ])
     removeComposite' c [] ps = sort ps
 
 main = do
-  putStrLn (show (sum (eratosthenes 160000)))
+  putStrLn (show (sum (eratosthenes 10)))
