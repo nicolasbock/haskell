@@ -27,3 +27,4 @@ eratosthenes n = sort (eratosthenes' [] [ 2..n ])
 
 main = do
   putStrLn (show (sum (eratosthenes 10)))
+  putStrLn (show (sum (eratosthenes 2000000)))
