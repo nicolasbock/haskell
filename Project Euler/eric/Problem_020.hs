@@ -3,5 +3,4 @@ digits n list
   | n==0             = list
   | otherwise        = digits (n`div`10) ((n`mod`10):list)
 
-main = do
-  putStrLn (show (sum (digits (product [1..100]) [])))
+main = putStrLn (show (sum (digits (product [1..100]) [])))
