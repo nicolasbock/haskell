@@ -3,9 +3,9 @@
 import Data.List
 
 collatz n 
- | n == 1    = [1]
- | otherwise = n:(collatz m)
- where m = (if odd n then 3*n+1 else n `div` 2) 
+ | n == 1 = [1]
+ | n even = n:(collatz (n `div` 2))
+ | n odd  = n:(collatz (3*n+1)) 
 
 lengths max = [length (collatz n) | n <- [1..max] ]
 
