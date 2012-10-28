@@ -1,6 +1,3 @@
-digits n list
-  | n==0 && list==[] = [0]
-  | n==0             = list
-  | otherwise        = digits (n`div`10) ((n`mod`10):list)
+import Data.Char
 
-main = putStrLn (show (sum (digits (2^1000) [])))
+main = putStrLn . show . sum . map digitToInt $ show (2^1000)
