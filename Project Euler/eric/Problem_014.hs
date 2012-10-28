@@ -1,16 +1,16 @@
 --This is correct but entirely too slow.
 
-import Data.List
-
 collatz n 
  | n == 1 = [1]
- | n even = n:(collatz (n `div` 2))
- | n odd  = n:(collatz (3*n+1)) 
+ | even n = n:(collatz (n `div` 2))
+ | odd n  = n:(collatz (3*n+1)) 
 
-lengths max = [length (collatz n) | n <- [1..max] ]
+maxLength n = maxLength' [2..n] (2,2)
 
-maxLength max = maximum (lengths max)
+maxLength' (n:list) (number, collatzLength)
+ | list == []                = number
+ | newLength > collatzLength = maxLength' list (n, newLength)
+ | otherwise                 = maxLength' list (number, collatzLength)  
+ where newLength = length (collatz n)
 
-locations max = [i+1 | i <- [0..max-1], (lengths max) !! i == maxLength max]
-
-main = putStrLn (show (locations 999999))
+main = putStrLn (show (maxLength 999999 ))
