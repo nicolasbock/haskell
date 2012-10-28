@@ -1,3 +1,5 @@
+--This is correct but entirely too slow.
+
 import Data.List
 
 collatz n 

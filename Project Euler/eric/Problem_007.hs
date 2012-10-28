@@ -1,3 +1,5 @@
+--This is clear and correct but will never finish running.
+
 factors n
  | n <= 0    = error("Not a counting number")
  | n == 1    = [1]
