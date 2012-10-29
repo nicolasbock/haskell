@@ -1,7 +1,8 @@
-fibonacci 1 = 1
-fibonacci 2 = 2
-fibonacci n = fibonacci (n-1) + fibonacci (n-2)
+fibList max startList
+ | nextFib > max = startList
+ | otherwise     = fibList max (nextFib:startList)
+ where nextFib = sum $ take 2 startList
 
-evenfibsum max = sum . takeWhile (<= max) . filter even $ map fibonacci [1..]
+evenFibsum max = sum. filter even $ fibList max [2, 1]
 
-main = putStrLn . show $ evenfibsum 4000000
+main = putStrLn . show $ evenFibsum 4000000
